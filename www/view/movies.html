@@ -1,0 +1,51 @@
+<ion-view view-title="My Movies">
+
+    <ion-content class="my-movies-container">
+        <div class="bar bar-header item-input-inset movie-search-bar">
+            <div class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="text" placeholder="Title" ng-model="movieSearch.name">
+            </div>
+            <button class="button button-clear movie-search-bar-clear" ng-click="clear()">
+                Clear
+            </button>
+        </div>
+        <button class="button button-block button-stable new-movie-pop-up-button" ng-click="openNewMovieModal()">
+            Click to add a new movie
+        </button>
+        <div ng-repeat="movie in movies  | filter:movieSearch.name" class="list card">
+
+            <div class="item item-avatar movie-card-header">
+                <img src="{{movie.Poster}}">
+                <h2>{{movie.Title}}</h2>
+                <p>{{movie.Director}}</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="{{movie.Poster}}">
+                <p>
+                    {{movie.Plot}}
+                </p>
+                <p>
+                    <a href="#" class="subdued">{{movie.imdbRating}} IMDB</a>
+                </p>
+            </div>
+            <div class="item item-divider">
+                <ul class="list">
+                    <li class="item item-toggle">
+                        Watched?
+                        <label class="toggle toggle-balanced">
+                            <input type="checkbox" ng-model="movie.watched" ng-change="movieWatched()">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </ion-content>
+
+</ion-view>

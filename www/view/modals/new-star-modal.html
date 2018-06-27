@@ -1,0 +1,42 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Add your favourite Star</h1>
+        <button class="button button-icon" ng-click="closeNewStarModal()">
+            <i class="icon ion-android-close"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content>
+        <form>
+            <div class="list list-inset">
+                <div class="bar bar-header item-input-inset new-movie-search-bar">
+                    <label class="item-input-wrapper">
+                        <i class="icon ion-ios7-search placeholder-icon"></i>
+                        <input type="search" placeholder="Search" ng-change="searchStars()" ng-model="newStar.searchName">
+                    </label>
+                    <button class="button button-clear new-star-clear-button">
+                        Cancel
+                    </button>
+                </div>
+
+                <div ng-if="!newStar.isExist" class="new-stars-list">
+                    <li  class="item item-avatar" ng-click="selectNewStarToList(newStar)" ng-repeat="newStar in newStars">
+                        <img src="{{newStar.person.image.medium}}">
+                        <h2>{{newStar.person.name}}</h2>
+                        <p>{{newStar.person.country.timezone}}</p>
+                    </li>
+                </div>
+
+                <div ng-if="newStar.isExist" class="item item-body">
+                    <img class="full-image" src="{{newStar.image.original}}">
+                    <p>
+                        Country: {{newStar.country.name}}
+                    </p>
+                    <p>
+                        Date of Birth: {{newStar.birthday}}
+                    </p>
+                </div>
+                <button type="submit" ng-click="addNewStarToList()" class="button button-block button-positive">Add Star</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

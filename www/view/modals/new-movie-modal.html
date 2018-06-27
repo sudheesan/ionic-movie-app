@@ -1,0 +1,44 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Add a new Movie</h1>
+        <button class="button button-icon" ng-click="closeNewMovieModal()">
+            <i class="icon ion-android-close"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content>
+        <form >
+            <div class="list list-inset">
+                <div class="bar bar-header item-input-inset new-movie-search-bar">
+                    <label class="item-input-wrapper">
+                        <i class="icon ion-ios-search placeholder-icon"></i>
+                        <input type="search" placeholder="Movie title" ng-model="newMovie.title">
+                    </label>
+                    <button class="button button-clear new-movie-search-button" ng-click="searchNewMovieToAdd(newMovie.title)">
+                        Search
+                    </button>
+                </div>
+                <div ng-if="newMovie.isExist" class="item item-body">
+                    <img class="full-image" src="{{newMovie.Poster}}">
+                    <p>
+                        {{newMovie.Plot}}
+                    </p>
+                    <p>
+                        <a href="#" class="subdued">{{newMovie.imdbRating}} IMDB</a>
+                    </p>
+                </div>
+                <ul  class="list">
+                    <li class="item item-toggle">
+                        Watched?
+                        <label class="toggle toggle-balanced  ">
+                            <input ng-disabled="newMovie.isExist == false" type="checkbox" ng-model="newMovie.watched">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </li>
+                </ul>
+                <button type="submit" ng-click="addNewMovieToList(newMovie)" class="button button-block button-positive">Add Movie</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

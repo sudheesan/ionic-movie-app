@@ -1,0 +1,38 @@
+<ion-view view-title="My Movies">
+
+    <ion-content class="my-movies-container">
+        <div class="bar bar-header item-input-inset movie-search-bar">
+            <div class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="text" placeholder="Actor name" ng-model="starSearch.name">
+            </div>
+            <button class="button button-clear movie-search-bar-clear" ng-click="clear()">
+                Clear
+            </button>
+        </div>
+        <button class="button button-block button-stable new-movie-pop-up-button" ng-click="openNewStarModal()">
+            Click to add a new star
+        </button>
+        <div ng-repeat="star in stars | filter:starSearch.name" class="list card">
+
+            <div class="item item-avatar">
+
+                <img src="{{star.image.medium}}">
+
+                <h2>{{star.name}}</h2>
+
+                <p>{{star.birthday}}</p>
+
+            </div>
+
+
+            <div class="item item-image">
+
+                <img src="{{star.image.original}}">
+
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>

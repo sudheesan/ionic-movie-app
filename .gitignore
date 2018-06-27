@@ -24,6 +24,7 @@ tmp/
 temp/
 platforms/
 plugins/
+www/lib
 plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
